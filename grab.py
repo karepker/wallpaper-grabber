@@ -9,7 +9,7 @@ __copyright__ = "2013 Kar Epker (karepker@gmail.com)"
 
 import argparse
 
-from bing_grab import BingGrabber
+from bing_grabber import BingGrabber
 
 # dict of grabber name to grabber
 # specify grabbers in `grabbers` argument by their names given here

@@ -1,16 +1,16 @@
 # Overview
 This module provides framework and functionality for downloading pictures of the day from various sources. It is implemented with Python 3.
 
-# Compatibility
+## Compatibility
 This script has been tested on GNU/Linux, but should be compatible with Python 3 installations on all platforms. Note that the `usage_example.py` script is unlikely to work on platforms that do not use the directory `/tmp`.
 
-# Usage
+## Usage
 Run `python3 grab.py --help`. Read the arguments and choose appropriate values. For example, I might run `python3 grab.py 'bing' --size '1920,1080' --base_dir '/home/karepker/Pictures/wallpapers'`.
 
-# Structure
+## Structure
 `wallpaper_grabber.py` provides a base class for individual wallpaper grabbers to implement. Other files, named as `xxx_grabber.py` provide functionality for grabbing images from specific sources. 
 
-# Copyright and License
+## Copyright and License
 Copyright (C) 2013 Kar Epker (karepker@gmail.com)
 
 This program is free software: you can redistribute it and/or modify

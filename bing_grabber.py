@@ -9,6 +9,7 @@ __copyright__ = "2013 Kar Epker (karepker@gmail.com)"
 
 import itertools
 import re
+import sys
 import urllib.parse
 import urllib.request
 
@@ -44,7 +45,13 @@ class BingGrabber(WallpaperGrabber):
         # make the request to get the page
         request_params_string = urllib.parse.urlencode(self.REQUEST_PARAMS)
         request_url = self.REQUEST_BASE_URL + '?' + request_params_string
-        response = urllib.request.urlopen(request_url).read().decode('utf-8')
+        try:
+            response = urllib.request.urlopen(request_url).read().decode(
+                'utf-8')
+        except urllib.error.URLError:
+            print("Can't establish connection", file=sys.stderr)
+            return 
+
 
         # find the image urls with a regex
         image_matches = re.findall(r'.*\<image\>.*\<urlBase\>(\S+)'

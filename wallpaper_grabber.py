@@ -10,6 +10,9 @@ __copyright__ = "2013 Kar Epker (karepker@gmail.com)"
 import datetime
 import itertools
 import os
+import shutil
+import sys
+import urllib.error
 import urllib.request
 
 class WallpaperGrabber:
@@ -45,5 +48,11 @@ class WallpaperGrabber:
                 full_path = os.path.join(grabber_directory, image_name)
                 if not os.path.exists(full_path):
                     # get and save image
-                    urllib.request.urlretrieve(image_url, full_path)
+                    try:
+                        with urllib.request.urlopen(
+                                image_url) as response, open(
+                                full_path, 'wb') as image_file:
+                            shutil.copyfileobj(response, image_file)
+                    except (urllib.error.URLError, IOError):
+                        print("Can't establish connection", file=sys.stderr)
                     break

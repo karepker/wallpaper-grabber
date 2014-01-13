@@ -37,7 +37,7 @@ class WallpaperGrabber:
         grabber_directory = os.path.join(directory, self.name)
         if (not os.path.exists(grabber_directory) or not
                 os.path.isdir(grabber_directory)):
-            os.mkdirs(directory)
+            os.makedirs(directory)
 
         # save each of the images found
         for image_url in self.get_page():

@@ -10,11 +10,13 @@ __copyright__ = "2013 Kar Epker (karepker@gmail.com)"
 import argparse
 
 from bing_grabber import BingGrabber
+from national_geographic_grabber import NationalGeographicGrabber
 
 # dict of grabber name to grabber
 # specify grabbers in `grabbers` argument by their names given here
 GRABBERS = {
-    'bing': BingGrabber
+    'bing': BingGrabber,
+    'natgeo': NationalGeographicGrabber
 }
 
 def make_size_tuple(to_convert):

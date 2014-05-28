@@ -37,7 +37,7 @@ class WallpaperGrabber:
         grabber_directory = os.path.join(directory, self.name)
         try:
             os.makedirs(grabber_directory)
-        except FileExistsError:
+        except OSError: 
             pass
 
         # save each of the images found

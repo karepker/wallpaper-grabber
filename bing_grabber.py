@@ -21,7 +21,7 @@ class BingGrabber(WallpaperGrabber):
     """
 
     def __init__(self, **options):
-        self.REQUEST_PARAMS = {'format': 'xml', 'idx': 0, 'mkt': 'en-US', 
+        self.REQUEST_PARAMS = {'format': 'xml', 'idx': 0, 'mkt': 'en-US',
             'n': 1}
         self.REQUEST_BASE_URL = 'http://www.bing.com/HPImageArchive.aspx'
         self.IMAGE_DOMAIN = 'http://www.bing.com'
@@ -38,8 +38,8 @@ class BingGrabber(WallpaperGrabber):
 
         Yields:
             URLs (strings) of images to be retrieved
-            
-        Raises: 
+
+        Raises:
             urllib.error.URLError: Couldn't find the feed URL
         """
         # make the request to get the page
@@ -50,7 +50,7 @@ class BingGrabber(WallpaperGrabber):
                 'utf-8')
         except urllib.error.URLError:
             print("Can't establish connection", file=sys.stderr)
-            return 
+            return
 
 
         # find the image urls with a regex
@@ -60,5 +60,5 @@ class BingGrabber(WallpaperGrabber):
 
         # yield all images found
         for image_base_url in image_matches:
-            yield (self.IMAGE_DOMAIN + image_base_url + image_size_string + 
+            yield (self.IMAGE_DOMAIN + image_base_url + image_size_string +
                 self.IMAGE_EXT)

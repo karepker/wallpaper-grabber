@@ -35,26 +35,26 @@ class NationalGeographicGrabber(WallpaperGrabber):
 
         Yields:
             URLs (strings) of images to be retrieved
-            
-        Raises: 
+
+        Raises:
             urllib.error.URLError: Couldn't find the feed URL
         """
         # get the feed page
-        request_url = self.REQUEST_FEED_URL 
+        request_url = self.REQUEST_FEED_URL
         try:
             response = urllib.request.urlopen(request_url).read().decode(
                 'utf-8')
         except urllib.error.URLError:
             print("Can't establish connection", file=sys.stderr)
             return
-        
+
         # find the latest image URL with a regex
         latest_image = re.search(''.join([self.REQUEST_IMAGE_URL,
             r'(?P<image_id>\d+)_0_\d+x\d+.jpg']), response, re.MULTILINE)
 
         # replace the resolution in the photo url with the desired resolution
         if latest_image:
-            yield ''.join([self.REQUEST_IMAGE_URL, 
+            yield ''.join([self.REQUEST_IMAGE_URL,
                 latest_image.group('image_id'), '_0_',
                 str(self.DEFAULT_IMAGE_SIZE[0]), 'x',
                 str(self.DEFAULT_IMAGE_SIZE[1]), '.jpg'])

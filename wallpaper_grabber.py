@@ -21,7 +21,7 @@ class WallpaperGrabber:
     """
     def __init__(self, image_ext, name):
         self.image_ext = image_ext
-        self.name = name 
+        self.name = name
 
     def get_page(self):
         raise NotImplementedError
@@ -37,12 +37,12 @@ class WallpaperGrabber:
         grabber_directory = os.path.join(directory, self.name)
         try:
             os.makedirs(grabber_directory)
-        except OSError: 
+        except OSError:
             pass
 
         # save each of the images found
         for image_url in self.get_page():
-            # determine an image name 
+            # determine an image name
             today_string = datetime.datetime.today().strftime('%Y-%m-%d')
             for i in itertools.count(start=0):
                 image_name = '%s %d%s' % (today_string, i, self.IMAGE_EXT)

@@ -22,7 +22,7 @@ GRABBERS = {
 def make_size_tuple(to_convert):
     """
     Makes a size tuple from the given string
-    
+
     Args:
         to_convert (string): A string of the form "width,height" to convert
 
@@ -35,7 +35,7 @@ def make_size_tuple(to_convert):
 if __name__ == '__main__':
     # set up arguments
     parser = argparse.ArgumentParser(description='Download daily wallpapers')
-    parser.add_argument('grabbers', help='Which grabbers to run, choices: %s' 
+    parser.add_argument('grabbers', help='Which grabbers to run, choices: %s'
         % (', '.join(list(GRABBERS.keys()))), type=lambda x: x.split(','))
     parser.add_argument('--size', '-s',  help='Size of images to grab '
         '(when available)', type=make_size_tuple, default="1920,1080")

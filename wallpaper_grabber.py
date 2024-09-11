@@ -45,7 +45,7 @@ class WallpaperGrabber:
             # determine an image name
             today_string = datetime.datetime.today().strftime('%Y-%m-%d')
             for i in itertools.count(start=0):
-                image_name = '%s %d%s' % (today_string, i, self.IMAGE_EXT)
+                image_name = '%s_%d%s' % (today_string, i, self.IMAGE_EXT)
                 full_path = os.path.join(grabber_directory, image_name)
                 if not os.path.exists(full_path):
                     # get and save image
